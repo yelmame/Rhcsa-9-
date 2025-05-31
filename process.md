@@ -34,16 +34,9 @@ It generally takes an input, processes it, and gives an appropriate output.
 ---
 
 ## Process Cycle
+![Alt text](process-life-cycle-4-638.img)
 
-Commands: `ps1`, `ps2`
 
-```text
-new → ready → running → terminate  
-        ↓         ↑  
-     waiting ←   
-```
-
----
 
 ## Types of Processes
 1. Parent  
