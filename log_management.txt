@@ -1,0 +1,101 @@
+vi logs
+record of everything  maintenance everything
+
+types of logs
+1 Rsyslog
+
+multisession log storage
+
+service: rsyslog.service
+config file: /etc/rsyslog.conf
+
+saves logs in /var/log
+some files in /var/log according to rsyslog storage category
+
+message: info(services)
+secure - security (authentication, password, user)
+boot- booting of os issues stored in this file 
+cron- scheduling - 
+
+vim / cat/less/more/head/ etc to these files for viewing 
+
+tail -f /var/log/secure  (live update of the logs)
+
+logrotate   -- /etc/logrotate.conf (rotate log after a particular time)
+messages-22082023, messages 
+
+logger ---(generate you own logs)
+logger "these are todays logs"
+stored in /var/log/messages
+
+
+commands 
+cd /var/log
+less messages
+
+#cat secure | grep authentication
+cat secure  | grep password
+cat /etc/rsyslog.conf
+cat /etc/logrotate.conf
+tail -f secure 
+su - admin
+tail secure 
+logger "this is information log"
+tail messages
+
+
+2 Journalctl
+single booting logs
+stores logs in one single file 
+shows record under single command
+
+service : systemd-jornald.service
+config file : /etc/system/journald.conf
+
+commands:
+journalctl -n 5 
+journalctl -f 
+journalctl -p emerg
+journalctl -p alert
+journalctl -p info
+journalctl -u sshd.service
+journalctl --since "-10 mins"
+journalctl --since "2025-01-10 6:00"  until "2025-01-15 7:00" 
+journalctl _USER=admin
+journalctl -UID=1001
+journalctl _COMM=useradd
+
+
+MODES OF LOGS
+PERSISTENT--/var/log/journal
+volatile -- /run/log/journal
+auto -- default
+
+vi /etc/system/journald.conf
+
+LOGS of previous boot
+
+journalctl -b 1 (boot 1  logs)
+journalctl -b -1  (previous boot logs)
+journalctl -b     (current boot logs)
+journalctl --list-boots
+
+
+
+
+
+
+
+timedctl   (shows time , region )
+timedctl list-timezones 
+timedctl set-timezone America.toronto
+timedctl set-ntp false
+
+timedctl set-time 9:00
+
+tzselect   (select and find timezone)
+4 
+yes
+
+
+
